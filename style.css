@@ -1,0 +1,8 @@
+body{
+    background-color: rgb(3, 15, 80);
+}
+/* Clase para aplicar el filtro verde */
+.card.seleccionada {
+    border: 2px solid green;
+    background-color: rgba(0, 255, 0, 0.6); /* Fondo verde claro */
+}
