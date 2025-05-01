@@ -7,7 +7,7 @@
 | 4/5            | luego de elegir sabores agregar al carrito                  | 🚧    | 🚧   | 🚧  |
 | 4/5            | agregar notificacion de producto añadido                    | 🚧    | 🚧   | 🚧  |
 | 4/5            | menu de carrito productos elegidos                          | 🚧    | 🚧   | 🚧  |
-| 11/5           | cookies para guardar los productos elegidos                 | 🚧    | 🚧   | 🚧  |
+| 11/5           | LocalStorage para guardar los productos elegidos            | 🚧    | 🚧   | 🚧  |
 | 11/5           | agregar footer                                              | 🚧    | 🚧   | 🚧  |
 | 11/5           | menu datos personales para la compra                        | 🚧    | 🚧   | 🚧  |
 | 11/5           | menu datos direccion para la compra                         | 🚧    | 🚧   | 🚧  |
