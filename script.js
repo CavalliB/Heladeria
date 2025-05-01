@@ -27,12 +27,28 @@ function seleccionar(sabor, elemento) {
 
 // Función para continuar
 function continuar() {
-    alert(`Sabores seleccionados: ${saboresSeleccionados.join(', ')}`);
-    // Aquí puedes redirigir al usuario o realizar otra acción
+    // Crear una cookie con los sabores seleccionados
+    const sabores = saboresSeleccionados.join(','); // Convierte el array en una cadena separada por comas
+    const cookieNombre = `Helado_${btoa(sabores)}`; // Usa Base64 para generar un nombre único
+
+    // Crear una cookie con la combinación de sabores
+    crearCookieHelado(cookieNombre, sabores, 1); // La cookie será válida por 1 día
+
+    alert(`Sabores seleccionados: ${sabores}`);
+    console.log(`Cookie creada: SaboresSeleccionados=${sabores}`);
 }
 
-// Función para crear una cookie
-function crearCookie(nombre, valorInicial, dias) {
+// Función para crear una cookie de helado
+function crearCookieHelado(nombre, valor, dias) {
+    // Crear o actualizar la cookie
+    let expiracion = generarFechaExpiracion(dias);
+    document.cookie = `${nombre}=${valor}; ${expiracion}; path=/`;
+    
+    console.log(`Cookie creada o actualizada: ${nombre}=${valor}`);
+}
+
+// Función para crear una cookie de producto
+function crearCookieProducto(nombre, valorInicial, dias) {
     // Obtener el valor actual de la cookie
     let valorActual = parseInt(getCookie(nombre)) || 0;
 
@@ -40,11 +56,8 @@ function crearCookie(nombre, valorInicial, dias) {
     let nuevoValor = valorActual + parseInt(valorInicial);
 
     // Crear o actualizar la cookie
-    let fecha = new Date();
-    fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000)); // Días a milisegundos
-    let expiracion = "expires=" + fecha.toUTCString();
+    let expiracion = generarFechaExpiracion(dias);
     document.cookie = `${nombre}=${nuevoValor}; ${expiracion}; path=/`;
-
     console.log(`Cookie actualizada: ${nombre}=${nuevoValor}`);
 }
 
@@ -58,4 +71,9 @@ function getCookie(nombre) {
         }
     }
     return null;
+}
+function generarFechaExpiracion(dias) {
+    let fecha = new Date();
+    fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000)); // Días a milisegundos
+    return "expires=" + fecha.toUTCString();
 }
