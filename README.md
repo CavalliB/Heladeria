@@ -1,6 +1,6 @@
 ## Roadmap
 
-| Week           | Topic                                                       | Code | Test | Doc |
+| Date           | Topic                                                       | Code | Test | Doc |
 | -------------- | ----------------------------------------------------------- | ---- | ---- | --- |
 | 4/5            | al seleccionar un producto que vaya al carrito              | ✅    | 🚧   | 🚧  |
 | 4/5            | al seleccionar un helado primero elegir la medida(radial)   | 🚧    | 🚧   | 🚧  |
