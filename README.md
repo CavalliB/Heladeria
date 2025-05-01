@@ -16,3 +16,5 @@
 | 18/5           | interfaz sing up & login usuario                            | 🚧    | 🚧   | 🚧  |
 | 19/5           | creacion de base de datos en sql y integrar en js           | 🚧    | 🚧   | 🚧  |
 | 19/5           | incluir al momento de comprar los datos del usuario         | 🚧    | 🚧   | 🚧  |
+| 26/5           | menu admin(cargar productos, ver pedidos)                   | 🚧    | 🚧   | 🚧  |
+| 26/5           | conectar con un servidor de pruebas                         | 🚧    | 🚧   | 🚧  |
