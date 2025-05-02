@@ -146,7 +146,7 @@ function mostrarCookiesEnTabla() {
         const fila = document.createElement('tr');
         fila.innerHTML = `
             <th scope="row">${index + 1}</th>
-            <td>${nombreLegible}</td> <!-- Producto -->
+            <td class="col-nombre">${nombreLegible}</td> <!-- Producto -->
             <td>
                 <button class="btn btn-sm btn-danger" onclick="modificarCantidad('${clave}', -1)">-</button>
                 <input type="number" class="form-control form-control-sm d-inline-block" 
