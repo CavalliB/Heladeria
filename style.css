@@ -10,3 +10,16 @@ body{
     width: 40px; 
     height: 40px;
 }
+/* Ocultar flechitas en navegadores basados en WebKit (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Ocultar flechitas en Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield; /* Propiedad estándar */
+
+}

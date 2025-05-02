@@ -9,6 +9,7 @@
 | 4/5            | menu de carrito productos elegidos                          | ✅    | 🚧   | 🚧  |
 | 11/5           | Cookies para guardar los productos elegidos                 | ✅    | 🚧   | 🚧  |
 | 11/5           | Mostrar precios en productos a elegir y subtotal y total    | 🚧    | 🚧   | 🚧  |
+| 11/5           | Botones para agregar o quitar producto en carrito           | ✅    | 🚧   | 🚧  |
 | 11/5           | agregar footer                                              | 🚧    | 🚧   | 🚧  |
 | 11/5           | menu datos personales para la compra                        | 🚧    | 🚧   | 🚧  |
 | 11/5           | menu datos direccion para la compra                         | 🚧    | 🚧   | 🚧  |
@@ -19,3 +20,6 @@
 | 19/5           | incluir al momento de comprar los datos del usuario         | 🚧    | 🚧   | 🚧  |
 | 26/5           | menu admin(cargar productos, ver pedidos)                   | 🚧    | 🚧   | 🚧  |
 | 26/5           | conectar con un servidor de pruebas                         | 🚧    | 🚧   | 🚧  |
+
+
+mostrar cookies no se muevan y que la cantidad se un cuadro de texto con un tamaño ya
