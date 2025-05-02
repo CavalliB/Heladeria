@@ -26,22 +26,20 @@ input[type="number"] {
 
 /* Estilo general para la columna del nombre */
 .col-nombre {
-    white-space: wrap; /* Evita que el texto se divida en varias líneas */
-    overflow: hidden; /* Oculta el texto que no cabe */
-    text-overflow: ellipsis; /* Agrega "..." al final si el texto es muy largo */
+    white-space: normal; /* Permite que el texto se divida en varias líneas */
+    word-wrap: break-word; /* Permite que las palabras largas se dividan */
+
 }
 
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
     .col-nombre {
         max-width: 100px; /* Limita el ancho de la columna */
-        font-size: 12px; /* Reduce el tamaño de la fuente */
     }
 }
 
 @media (max-width: 480px) {
     .col-nombre {
         max-width: 80px; /* Aún más pequeño para pantallas muy pequeñas */
-        font-size: 10px; /* Reduce aún más el tamaño de la fuente */
     }
 }

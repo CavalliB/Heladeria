@@ -21,5 +21,3 @@
 | 26/5           | menu admin(cargar productos, ver pedidos)                   | 🚧    | 🚧   | 🚧  |
 | 26/5           | conectar con un servidor de pruebas                         | 🚧    | 🚧   | 🚧  |
 
-
-mostrar cookies no se muevan y que la cantidad se un cuadro de texto con un tamaño ya
