@@ -70,18 +70,27 @@
                 </div>    
             </div>
         </div>
+        <div class="text-center mt-4">
+            <h5 style="color: #007bff;">Selecciona la medida:</h5> <!-- Cambia el color del texto -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="medida" id="medida1/4" value="1/4" checked>
+                <label class="form-check-label" for="medida1/4" style="color: #007bff;">1/4 kg</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="medida" id="medida1/2" value="1/2">
+                <label class="form-check-label" for="medida1/2" style="color: #007bff;">1/2 kg</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="medida" id="medida1kg" value="1kg">
+                <label class="form-check-label" for="medida1kg" style="color: #007bff;">1 kg</label>
+            </div>
+        </div>
         
         <!-- Botón para continuar -->
         <div class="text-center mt-4">
             <button id="continuarBtn" class="btn btn-success" disabled onclick="continuar()">Continuar</button>
         </div>
-        <script>
-            // Obtener el parámetro "medida" de la URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const medida = urlParams.get('medida'); // Ejemplo: "1/4", "1/2", "1kg"
-
-            console.log(`Medida seleccionada: ${medida}`);
-        </script>
+        
         <footer></footer>
     </body>
 </html>

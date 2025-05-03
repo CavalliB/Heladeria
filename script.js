@@ -30,9 +30,9 @@ function seleccionar(sabor, elemento) {
 
 // Función para continuar
 function continuar() {
-    // Obtener la medida desde la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const medida = urlParams.get('medida'); // Ejemplo: "1/4", "1/2", "1kg"
+    // Obtener la medida seleccionada del grupo de botones radiales
+    const medidaSeleccionada = document.querySelector('input[name="medida"]:checked');
+    const medida = medidaSeleccionada.value;
 
     // Crear una cookie con los sabores seleccionados
     const sabores = saboresSeleccionados.sort().join(','); // Convierte el array en una cadena separada por comas y ordenada
