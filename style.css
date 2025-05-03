@@ -10,6 +10,17 @@ body{
     width: 40px; 
     height: 40px;
 }
+.text-radial{
+    color: #007bff;
+}
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 0.5rem; /* Espacio entre el botón radial y el texto */
+    text-align: center; /* Asegura que el texto esté centrado */
+}
+
 /* Ocultar flechitas en navegadores basados en WebKit (Chrome, Safari, Edge) */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
