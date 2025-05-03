@@ -30,27 +30,34 @@ function seleccionar(sabor, elemento) {
 
 // Función para continuar
 function continuar() {
+    // Obtener la medida desde la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const medida = urlParams.get('medida'); // Ejemplo: "1/4", "1/2", "1kg"
+
     // Crear una cookie con los sabores seleccionados
     const sabores = saboresSeleccionados.sort().join(','); // Convierte el array en una cadena separada por comas y ordenada
-    const cookieNombre = `Helado_${btoa(sabores).replace(/=+$/, '')}`; // Usa Base64 para generar un nombre único y elimina el relleno `=`
+    const cookieNombre = `Helado_${btoa(sabores + medida).replace(/=+$/, '')}`; // Usa Base64 para generar un nombre único y elimina el relleno `=`
+    const valorCookie = `${sabores}|${medida}`; // Incluye los sabores y la medida en el valor de la cookie
 
-    // Crear una cookie con la combinación de sabores
-    crearCookieHelado(cookieNombre, sabores, 1); // La cookie será válida por 1 día
+    // Llamar a la función para crear la cookie
+    crearCookieHelado(cookieNombre, valorCookie, 1); // La cookie será válida por 1 día
 
-    alert(`Sabores seleccionados: ${sabores}`);
-    console.log(`Cookie creada: SaboresSeleccionados=${sabores}`);
+    alert(`Sabores seleccionados: ${sabores}\nMedida: ${medida}`);
+    console.log(`Cookie creada: ${cookieNombre}=${valorCookie}`);
+
+    // Redirigir al carrito
+    window.location.href = 'ShoppingCart.html';
 }
 
 function crearCookieHelado(nombre, valor, dias) {
-    // Obtener el valor actual de la cookie (si existe)
     let cookieActual = getCookie(nombre);
     let cantidad = 1; // Valor inicial
 
     if (cookieActual) {
         // Si la cookie ya existe, extraer la cantidad actual y sumarle 1
-        const [sabores, cantidadActual] = cookieActual.split('|');
+        const [sabores, medida, cantidadActual] = cookieActual.split('|');
         cantidad = parseInt(cantidadActual) + 1;
-        valor = sabores; // Mantener los sabores originales
+        valor = `${sabores}|${medida}`; // Mantener los sabores y medida originales
     }
 
     // Crear o actualizar la cookie con el nuevo valor y cantidad
@@ -117,18 +124,19 @@ function mostrarCookiesEnTabla() {
         const valorCompleto = getCookie(clave); // Obtiene el valor de la cookie
         if (!valorCompleto) return; // Si la cookie no existe, la ignoramos
 
-        let valor, cantidad;
+        let cantidad = 1;
 
         // Verifica si la cookie incluye el separador `|`
         if (valorCompleto.includes('|')) {
-            [valor, cantidad] = valorCompleto.split('|'); // Divide el valor en sabores y cantidad
-            cantidad = parseInt(cantidad) || 1; // Asegura que la cantidad sea un número
+            // Caso: Helados
+            const partes = valorCompleto.split('|');
+            cantidad = parseInt(partes[2]) || 1; // Cantidad
         } else {
-            valor = valorCompleto || ''; // Si no hay `|`, todo el valor corresponde a los sabores
-            cantidad = parseInt(valorCompleto) || 1; // Intenta interpretar el contenido como cantidad
+            // Caso: Productos
+            cantidad = parseInt(valorCompleto) || 1; // La cantidad es el valor de la cookie
         }
 
-        // Decodifica el nombre de la cookie si es Base64
+        // Decodifica el nombre de la cookie si es Base64 (para helados)
         let nombreLegible = clave;
         if (clave.startsWith('Helado_')) {
             try {
@@ -146,7 +154,9 @@ function mostrarCookiesEnTabla() {
         const fila = document.createElement('tr');
         fila.innerHTML = `
             <th scope="row">${index + 1}</th>
-            <td class="col-nombre">${nombreLegible}</td> <!-- Producto -->
+            <td class="col-nombre">
+                ${nombreLegible}
+            </td> <!-- Producto -->
             <td>
                 <button class="btn btn-sm btn-danger" onclick="modificarCantidad('${clave}', -1)">-</button>
                 <input type="number" class="form-control form-control-sm d-inline-block" 
@@ -158,7 +168,7 @@ function mostrarCookiesEnTabla() {
                         onchange="actualizarCantidadAbsoluta('${clave}', this.value)">
                 <button class="btn btn-sm btn-success" onclick="modificarCantidad('${clave}', 1)">+</button>
             </td> <!-- Cantidad -->
-            <td>$${precioTotal}</td> <!-- Precio -->
+            <td>${precioTotal}$</td> <!-- Precio -->
         `;
 
         // Agrega la fila al cuerpo de la tabla
@@ -166,7 +176,8 @@ function mostrarCookiesEnTabla() {
     });
 }
 
-function modificarCantidad(nombre, cambio) { // Mediante botones + y -
+
+function modificarCantidad(nombre, cambio) {
     // Obtener el valor actual de la cookie
     let cookieActual = getCookie(nombre);
     if (!cookieActual) return; // Si no existe la cookie, no hacemos nada
@@ -176,8 +187,9 @@ function modificarCantidad(nombre, cambio) { // Mediante botones + y -
     // Verifica si la cookie incluye el separador `|`
     if (cookieActual.includes('|')) {
         // Caso: Helados
-        [valor, cantidad] = cookieActual.split('|'); // Divide el valor en sabores y cantidad
-        cantidad = parseInt(cantidad) || 0; // Asegura que la cantidad sea un número
+        const partes = cookieActual.split('|'); // Divide el valor en partes
+        valor = partes.slice(0, -1).join('|'); // Mantiene todo excepto la cantidad
+        cantidad = parseInt(partes[partes.length - 1]) || 0; // Obtiene la cantidad
     } else {
         // Caso: Productos
         valor = nombre; // El nombre del producto es el identificador
@@ -205,7 +217,6 @@ function modificarCantidad(nombre, cambio) { // Mediante botones + y -
             document.cookie = `${nombre}=${cantidad}; ${expiracion}; path=/`;
         }
     }
-
     // Actualizar el valor del cuadro de texto
     inputCantidad.value = cantidad;
 
@@ -231,7 +242,8 @@ function actualizarCantidadAbsoluta(nombre, nuevaCantidad) {
 
     // Verifica si la cookie incluye el separador `|`
     if (cookieActual.includes('|')) {
-        [valor] = cookieActual.split('|'); // Divide el valor en sabores y cantidad
+        const partes = cookieActual.split('|'); // Divide el valor en partes
+        valor = partes.slice(0, -1).join('|'); // Mantiene todo excepto la cantidad
     } else {
         valor = nombre; // El nombre del producto es el identificador
     }

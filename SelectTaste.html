@@ -13,6 +13,7 @@
         <script defer src="script.js"></script>
     </head>
     
+    
     <body class="p-3 m-0 border-0 bd-example m-0 border-0">
         <nav class="navbar navbar-expand-lg bg-light fixed-top">
             <div class="container-fluid">
@@ -74,6 +75,13 @@
         <div class="text-center mt-4">
             <button id="continuarBtn" class="btn btn-success" disabled onclick="continuar()">Continuar</button>
         </div>
+        <script>
+            // Obtener el parámetro "medida" de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const medida = urlParams.get('medida'); // Ejemplo: "1/4", "1/2", "1kg"
+
+            console.log(`Medida seleccionada: ${medida}`);
+        </script>
         <footer></footer>
     </body>
 </html>
