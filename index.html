@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="./Pics/Icono.png">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="style.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
     <title>Heladeria</title>
     
 </head>
@@ -25,31 +27,36 @@
 
     </div>
   </nav>
-
+  <div class="notification-box flex flex-col items-center justify-center fixed w-full z-50 p-3">
+    <!-- Notification container -->
+  </div>
   <div class="row row-cols-auto g-3 justify-content-center mt-4">
     <div class="col">
       <div class="card h-100" style="width: 18rem;">
-          <img src="./Pics/Helado.webp" class="bd-placeholder-img card-img-top" width="100%" height="180" alt="Image cap">
-          <div class="card-body">
-              <h5 class="card-title">Elegi tus gustos favoritos</h5>
-              <p class="card-text">1/4, 1/2 o 1kg de helado, puedes elegir hasta 3 sabores</p>
-              <a href="./SelectTaste.html" class="btn btn-primary">Seleccionar Sabores</a>
-          </div>
+        <img src="./Pics/Helado.webp" class="bd-placeholder-img card-img-top" width="100%" height="180" alt="Image cap">
+        <div class="card-body">
+          <h5 class="card-title">Elegi tus gustos favoritos</h5>
+          <p class="card-text">1/4, 1/2 o 1kg de helado, puedes elegir hasta 3 sabores</p>
+          <a href="./SelectTaste.html" class="btn btn-primary">Seleccionar Sabores</a>
+        </div>
       </div>
-  </div>
+    </div>
 
-  <div class="col">
-    <div class="card h-100" style="width: 18rem;">
-      <img src="./Pics/" class="bd-placeholder-img card-img-top" width="100%" height="180" alt="Image cap">
-      <div class="card-body">
-        <h5 class="card-title">Postresito</h5>
-        <p class="card-text">Un postre helado de los amigos de grido</p>
-        <a class="btn btn-primary" onclick="crearCookieProducto('Postresito', '1', 1)">Agregar</a>
-      </div>
-    </div>  
+    <div class="col">
+      <div class="card h-100" style="width: 18rem;">
+        <img src="./Pics/Postresito3.jpeg" class="card-img-top img-fluid" style="height: 180px; object-fit: cover;" alt="Image cap">
+        <div class="card-body">
+          <h5 class="card-title">Postresito</h5>
+          <p class="card-text">Un postre helado de los amigos de grido</p>
+          <a class="btn btn-primary" onclick="crearCookieProducto('Postresito', '1', 1); sendNotification('success', '¡Postresito agregado al carrito!')">Agregar</a>
+        </div>
+      </div>  
+    </div>
+  </div>
   
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="script.js"></script>
 </body>
 
 </html>
+
