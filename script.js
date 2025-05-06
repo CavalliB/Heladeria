@@ -292,7 +292,7 @@ function sendNotification(type, text) {
     }
   };
   let component = document.createElement("div");
-  component.className = `relative flex items-center bg-${alerts[type].color} text-white text-sm font-bold px-4 py-3 rounded-md opacity-0 transform transition-all duration-500 mb-1`;
+  component.className = `relative flex items-center bg-${alerts[type].color} text-white text-sm font-bold px-3 py-1 rounded-md opacity-0 transform transition-all duration-500 mb-1 mr-6`;
   component.innerHTML = `${alerts[type].icon}<p>${text}</p>`;
   notificationBox.appendChild(component);
   setTimeout(() => {
