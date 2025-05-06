@@ -312,5 +312,4 @@ function sendNotification(type, text) {
   setTimeout(() => {
     notificationBox.removeChild(component);
   }, 5700);
-  //If you can do something more elegant than timeouts, please do, but i can't
 }
