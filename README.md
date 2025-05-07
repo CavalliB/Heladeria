@@ -5,7 +5,7 @@
 | 4/5            | al seleccionar un producto que vaya al carrito              | ✅    | 🚧   | 🚧  |
 | 4/5            | seleccionar medida de un helado                             | ✅    | 🚧   | 🚧  |
 | 4/5            | luego de elegir sabores agregar al carrito                  | ✅    | 🚧   | 🚧  |
-| 4/5            | agregar notificacion de producto añadido                    | 🚧    | 🚧   | 🚧  |
+| 4/5            | agregar notificacion de producto añadido                    | ✅    | 🚧   | 🚧  |
 | 4/5            | menu de carrito productos elegidos                          | ✅    | 🚧   | 🚧  |
 | 11/5           | Cookies para guardar los productos elegidos                 | ✅    | 🚧   | 🚧  |
 | 11/5           | Mostrar precios en productos a elegir y subtotal y total    | 🚧    | 🚧   | 🚧  |
